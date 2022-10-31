@@ -1,22 +1,24 @@
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class Matrix {
-    private final int rows;
-    private final int cols;
+public class Matrix<T> {
 
-    private final List<List<Double>> items;
+    private final List<List<T>> items;
 
-    public Matrix(int rows, int cols, List<List<Double>> items) {
-        this.rows = rows;
-        this.cols = cols;
+    public Matrix(List<List<T>> items) {
         this.items = items;
     }
 
-    public double get(int row, int col) {
+    @Override
+    public String toString() {
+        return items.stream().map(List<T>::toString).collect(Collectors.joining("\n"));
+    }
+
+    public T get(int row, int col) {
         return items.get(row).get(col);
     }
 
-    public void set(int row, int col, double value) {
+    public void set(int row, int col, T value) {
         items.get(row).set(col, value);
     }
 }
