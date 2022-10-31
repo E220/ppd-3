@@ -1,3 +1,7 @@
+package matrix;
+
+import utils.Pair;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,12 +18,12 @@ public class Matrix {
         return items.stream().map(List<Integer>::toString).collect(Collectors.joining("\n"));
     }
 
-    public int get(int row, int col) {
-        return items.get(row).get(col);
+    public int get(Pair pair) {
+        return items.get(pair.row()).get(pair.col());
     }
 
-    public void set(int row, int col, int value) {
-        items.get(row).set(col, value);
+    public void set(Pair pair, int value) {
+        items.get(pair.row()).set(pair.col(), value);
     }
 
     public int getRows() {
