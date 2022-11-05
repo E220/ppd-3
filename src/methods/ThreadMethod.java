@@ -4,15 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ThreadMethod implements Method {
-    private final List<Thread> threads;
-
-    public ThreadMethod(List<Runnable> tasks) {
-        this.threads = new ArrayList<>(tasks.size());
-        tasks.forEach(task -> this.threads.add(new Thread(task)));
-    }
+    private final List<Thread> threads = new ArrayList<>();
 
     @Override
-    public void start() {
+    public void start(List<Runnable> tasks) {
+        tasks.forEach(task -> this.threads.add(new Thread(task)));
         this.threads.forEach(Thread::start);
     }
 

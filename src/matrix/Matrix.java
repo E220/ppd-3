@@ -2,7 +2,9 @@ package matrix;
 
 import utils.Pair;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class Matrix {
@@ -11,6 +13,16 @@ public class Matrix {
 
     public Matrix(List<List<Integer>> items) {
         this.items = items;
+    }
+
+    public Matrix(int rows, int cols, Supplier<Integer> supplier) {
+        this.items = new ArrayList<>(rows);
+        for (int row = 0; row < rows; row++) {
+            this.items.add(new ArrayList<>(cols));
+            for (int col = 0; col < cols; col++) {
+                this.items.get(row).add(supplier.get());
+            }
+        }
     }
 
     @Override
