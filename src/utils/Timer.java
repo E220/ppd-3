@@ -6,7 +6,11 @@ public class Timer {
     public void start() {
         this.tick = System.nanoTime();
     }
-    public void measure() {
-        System.out.println((System.nanoTime() - this.tick) / 1000.0 + "ms");
+    public double measure() {
+        return (System.nanoTime() - this.tick) / 1000.0;
+    }
+
+    public void print(double diff) {
+        System.out.println(diff + "ms");
     }
 }
